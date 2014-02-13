@@ -95,7 +95,9 @@ print_prep(int table, int update)
 		return(fopen(upath, "w"));
         }
     res = tbl_open(table, "w");
+    #ifndef MYRIAD_BENCH
     OPEN_CHECK(res, tdefs[table].name);
+    #endif /* MYRIAD_BENCH */
     return(res);
 }
 

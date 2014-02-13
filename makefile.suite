@@ -173,6 +173,8 @@ ALLSRC=$(DBGENSRC) $(REFERENCE) $(QSRC) $(SCRIPTS)
 JUNK  = 
 #
 all: $(PROGS)
+myriad: CFLAGS += -DMYRIAD_BENCH
+myriad: $(PROG1)
 $(PROG1): $(OBJ1) $(SETS) 
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ1) $(LIBS)
 $(PROG2): permute.h $(OBJ2) 
