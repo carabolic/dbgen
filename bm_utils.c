@@ -382,21 +382,21 @@ tbl_open(int tbl, char *mode)
 {
     char      prompt[256];
     char      fullpath[256];
-    #ifdef MYRIAD_BENCH
+    #ifdef MYRIAD_NO_OUTPUT
     strcpy(fullpath, "/dev/null");
-    #endif /* MYRIAD_BENCH */
+    #endif /* MYRIAD_NO_OUTPUT */
     FILE     *f;
     struct stat fstats;
     int      retcode;
 
     // DO NOT CREATE FILES FOR THE TABLES
-    #ifndef MYRIAD_BENCH
+    #ifndef MYRIAD_NO_OUTPUT
     if (*tdefs[tbl].name == PATH_SEP)
         strcpy(fullpath, tdefs[tbl].name);
     else
         sprintf(fullpath, "%s%c%s",
             env_config(PATH_TAG, PATH_DFLT), PATH_SEP, tdefs[tbl].name);
-    #endif /* MYRIAD_BENCH */
+    #endif /* MYRIAD_NO_OUTPUT */
     retcode = stat(fullpath, &fstats);
     if (retcode) {
 		if (errno != ENOENT) {
