@@ -2,3 +2,4 @@ dbgen
 qgen
 makefile
 *.o
+tags
