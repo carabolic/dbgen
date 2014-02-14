@@ -109,6 +109,15 @@ CC      =
 DATABASE= 
 MACHINE = 
 WORKLOAD = 
+################
+## MYRIAD BENCHMARK FLAGS
+################
+# Supported flags are:
+#	MYRIAD_NO_OUTPUT	- dbgen generates no output
+#	MYRIAD_NO_COMMENTS	- dbgen generates no comments
+# Example:
+#	MYRIAD = -DMYRIAD_NO_COMMENTS -DMYRIAD_NO_OUTPUT
+MYRIAD = -DMYRIAD_NO_COMMENTS -DMYRIAD_NO_OUTPUT
 #
 CFLAGS	= -g -DDBNAME=\"dss\" -D$(MACHINE) -D$(DATABASE) -D$(WORKLOAD) -DRNG_TEST -D_FILE_OFFSET_BITS=64 
 LDFLAGS = -O
@@ -173,8 +182,10 @@ ALLSRC=$(DBGENSRC) $(REFERENCE) $(QSRC) $(SCRIPTS)
 JUNK  = 
 #
 all: $(PROGS)
-myriad: CFLAGS += -DMYRIAD_BENCH
-myriad: $(PROG1)
+# custom myriad target
+myriad-dbgen: CFLAGS += $(MYRIAD)
+myriad-dbgen: $(PROG1)
+# end of custom myriad target
 $(PROG1): $(OBJ1) $(SETS) 
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ1) $(LIBS)
 $(PROG2): permute.h $(OBJ2) 
