@@ -1,3 +1,8 @@
+CHANGES FOR MYRIAD BENCHMARK
+   -- dbgen generates no output if compiled with MYRIAD_NO_OUTPUT
+   -- dbgen generates no comments (for all tables) if compiled with MYRIAD_NO_COMMENTS
+   -- added new make target to build custom myriad benchmark dbgen
+
 # @(#)HISTORY	2.1.8.3
 Changes as of 10/11/99
    -- versions: TPCH 1.2.0a, TPCR 1.1.0a

@@ -1,3 +1,22 @@
+This is a fork of DBGEN 2.4.0 distributed by http://www.tpc.org
+===================
+
+0. Purpose
+
+This project is used in order to benchmark DBGEN against the Myriad Toolkit.
+
+DBGEN can be found at http://www.tpc.org.
+
+tpch-gen (based on the Myriad Toolkit) can be found at https://github.com/TU-Berlin-DIMA/tpch-gen
+
+1. Changes
+
+The data generator DBGEN produces no output, when compiled with `-DMYRIAD_NO_OUTPUT`, and no comments, when compiled with `-DMYRIAD_NO_COMMENTS`.
+
+2. Build custom DBGEN
+
+Using make with the `dbgen-myriad` target produces the custom DBGEN.
+
 # @(#)README	2.4.0
 
 Table of Contents
