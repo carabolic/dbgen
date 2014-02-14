@@ -62,7 +62,11 @@ extern adhoc_t  adhocs[];
 	(long) ((p - 1) / tot_scnt))) % tot_scnt + 1; \
     }
 #define V_STR(avg, sd, tgt)  a_rnd((int)(avg * V_STR_LOW),(int)(avg * V_STR_HGH), sd, tgt)
+#ifndef MYRIAD_NO_COMMENTS
 #define TEXT(avg, sd, tgt)  dbg_text(tgt, (int)(avg * V_STR_LOW),(int)(avg * V_STR_HGH), sd)
+#else
+#define TEXT(avg, sd, tgt) // do nothing
+#endif /* MYRIAD_NO_COMMENTS */
 static void gen_phone PROTO((DSS_HUGE ind, char *target, long seed));
 
 DSS_HUGE
